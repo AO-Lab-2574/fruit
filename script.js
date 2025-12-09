@@ -6,9 +6,9 @@ let inventory = {
     '日川白鳳(2kg)': 0,
     'なつっこ(2kg)': 0,
     '川中島(2kg)': 0,
+    'デラウェア(2房)': 0,
     'シャインマスカット(2房)': 0,
-    'サンシャインレッド(2房)': 0,
-    'デラウェア(2房)': 0
+    'サンシャインレッド(2房)': 0
 };
 
 // スライドショー機能
@@ -79,9 +79,9 @@ function updateStockDisplay() {
         { name: '日川白鳳(2kg)', stockId: 'stock-peach-1', btnId: 'btn-peach-1' },
         { name: 'なつっこ(2kg)', stockId: 'stock-peach-2', btnId: 'btn-peach-2' },
         { name: '川中島(2kg)', stockId: 'stock-peach-3', btnId: 'btn-peach-3' },
-        { name: 'シャインマスカット(2房)', stockId: 'stock-grape-1', btnId: 'btn-grape-1' },
-        { name: 'サンシャインレッド(2房)', stockId: 'stock-grape-2', btnId: 'btn-grape-2' },
-        { name: 'デラウェア(2房)', stockId: 'stock-grape-3', btnId: 'btn-grape-3' }
+        { name: 'デラウェア(2房)', stockId: 'stock-grape-1', btnId: 'btn-grape-1' },
+        { name: 'シャインマスカット(2房)', stockId: 'stock-grape-2', btnId: 'btn-grape-2' },
+        { name: 'サンシャインレッド(2房)', stockId: 'stock-grape-3', btnId: 'btn-grape-3' }
     ];
 
     products.forEach(product => {
