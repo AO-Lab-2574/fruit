@@ -3,8 +3,10 @@ let cart = [];
 
 // 在庫管理(デフォルト値)
 let inventory = {
-    '百花蜜(300g)': 0,
-    '百花蜜(500g)': 0
+    '白鳳桃(2kg)': 0,
+    '白鳳桃(3kg)': 0,
+    'シャインマスカット(1房)': 0,
+    'シャインマスカット(2房)': 0
 };
 
 // スライドショー機能
@@ -35,7 +37,7 @@ function initSlideshow() {
 async function fetchInventoryFromGoogleSheets() {
     try {
         // ⚠️ ここに自分のGoogle Apps ScriptのURLを入れる
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw6ixzojTSJECfoOEvbnewj0rnhLF5ZKtj_t_rlbQElBEmJgTlG6CnQQvOqMyknWYls8A/exec';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
         console.log('在庫情報を取得中...');
         const response = await fetch(GOOGLE_SHEETS_URL);
@@ -72,8 +74,10 @@ async function fetchInventoryFromGoogleSheets() {
 // 在庫表示を更新
 function updateStockDisplay() {
     const products = [
-        { name: '百花蜜(300g)', stockId: 'stock-300g', btnId: 'btn-300g' },
-        { name: '百花蜜(500g)', stockId: 'stock-500g', btnId: 'btn-500g' }
+        { name: '白鳳桃(2kg)', stockId: 'stock-peach-2kg', btnId: 'btn-peach-2kg' },
+        { name: '白鳳桃(3kg)', stockId: 'stock-peach-3kg', btnId: 'btn-peach-3kg' },
+        { name: 'シャインマスカット(1房)', stockId: 'stock-grape-1', btnId: 'btn-grape-1' },
+        { name: 'シャインマスカット(2房)', stockId: 'stock-grape-2', btnId: 'btn-grape-2' }
     ];
 
     products.forEach(product => {
@@ -226,7 +230,7 @@ function prepareOrderForGoogleForm() {
         `合計:¥${finalTotal.toLocaleString()}`;
 
     // GoogleフォームのベースURL
-    const formUrlBase = 'https://docs.google.com/forms/d/e/1FAIpQLSeeo3brfYPjNcLU3Sm7WdetZgbTxpT1X6CEXYjCbty5dJxdtw/viewform';
+    const formUrlBase = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform';
 
     // プリフィルドURLの作成
     const prefilledUrl = `${formUrlBase}?entry.${GOOGLE_FORM_ENTRY_ID}=${encodeURIComponent(fullOrderSummary)}`;
@@ -245,7 +249,7 @@ function openOrderForm() {
 
     console.log('📋 openOrderForm が呼ばれました');
     console.log('🛒 現在のカート:', cart);
-    console.log('🔘 ボタン要素:', googleFormButton);
+    console.log('📘 ボタン要素:', googleFormButton);
 
     // 注文内容の表示と合計金額の計算
     if (cart.length === 0) {
