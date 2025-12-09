@@ -3,10 +3,12 @@ let cart = [];
 
 // 在庫管理(デフォルト値)
 let inventory = {
-    '白鳳桃(2kg)': 0,
-    '白鳳桃(3kg)': 0,
-    'シャインマスカット(1房)': 0,
-    'シャインマスカット(2房)': 0
+    '日川白鳳(2kg)': 0,
+    'なつっこ(2kg)': 0,
+    '川中島(2kg)': 0,
+    'シャインマスカット(2房)': 0,
+    'サンシャインレッド(2房)': 0,
+    'デラウェア(2房)': 0
 };
 
 // スライドショー機能
@@ -37,7 +39,7 @@ function initSlideshow() {
 async function fetchInventoryFromGoogleSheets() {
     try {
         // ⚠️ ここに自分のGoogle Apps ScriptのURLを入れる
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyl_fEHz7eXymDnueRWsWt5FJQqqzrMzKLy-Mhf2Apwsm6-Wg3X1Ur4OPNMVDUojfO7NA/exec';
 
         console.log('在庫情報を取得中...');
         const response = await fetch(GOOGLE_SHEETS_URL);
@@ -74,10 +76,12 @@ async function fetchInventoryFromGoogleSheets() {
 // 在庫表示を更新
 function updateStockDisplay() {
     const products = [
-        { name: '白鳳桃(2kg)', stockId: 'stock-peach-2kg', btnId: 'btn-peach-2kg' },
-        { name: '白鳳桃(3kg)', stockId: 'stock-peach-3kg', btnId: 'btn-peach-3kg' },
-        { name: 'シャインマスカット(1房)', stockId: 'stock-grape-1', btnId: 'btn-grape-1' },
-        { name: 'シャインマスカット(2房)', stockId: 'stock-grape-2', btnId: 'btn-grape-2' }
+        { name: '日川白鳳(2kg)', stockId: 'stock-peach-1', btnId: 'btn-peach-1' },
+        { name: 'なつっこ(2kg)', stockId: 'stock-peach-2', btnId: 'btn-peach-2' },
+        { name: '川中島(2kg)', stockId: 'stock-peach-3', btnId: 'btn-peach-3' },
+        { name: 'シャインマスカット(2房)', stockId: 'stock-grape-1', btnId: 'btn-grape-1' },
+        { name: 'サンシャインレッド(2房)', stockId: 'stock-grape-2', btnId: 'btn-grape-2' },
+        { name: 'デラウェア(2房)', stockId: 'stock-grape-3', btnId: 'btn-grape-3' }
     ];
 
     products.forEach(product => {
@@ -230,7 +234,7 @@ function prepareOrderForGoogleForm() {
         `合計:¥${finalTotal.toLocaleString()}`;
 
     // GoogleフォームのベースURL
-    const formUrlBase = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform';
+    const formUrlBase = 'https://docs.google.com/forms/d/e/1FAIpQLSdslTwpqTlsBuFfhLC10BI9k_fRE1CEYL224Z3CILUwFebpew/viewform';
 
     // プリフィルドURLの作成
     const prefilledUrl = `${formUrlBase}?entry.${GOOGLE_FORM_ENTRY_ID}=${encodeURIComponent(fullOrderSummary)}`;
